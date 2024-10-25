@@ -35,6 +35,15 @@ app.get('/index', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.post('/name', (req, res) => {
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    res.send(`Hello ${firstname} ${lastname}`);
+});
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.get('/api/movies', (req, res) => {
     const movies = [
         {
@@ -59,8 +68,7 @@ app.get('/api/movies', (req, res) => {
             "Poster": "https://example.com/poster3.jpg"
         }
     ];
-    res.json({ movies });
-    res.status(201).json({ movies });
+    res.status(201).json({ myMovies: movies });
 });
 
 //Listener to log server to port

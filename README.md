@@ -1,1 +1,1 @@
-"#DRQLab 05" 
+Express.js is a tool that helps developers create websites and web applications using Node.js. It's a helpful framework that makes it easier to build the back end of a website, where all the behind-the-scenes action happens. It manages things like how the website responds when you click buttons or fill out forms. With Express.js, developers can set up servers quickly and efficiently.

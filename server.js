@@ -5,6 +5,11 @@ const port = 3000;
 
 app.use(express.static('public'));  //USE HTML JS CSS Files from PUBLIC dir
 
+
+//Body-parser for POST requests
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 //Get req on the main page
 app.get('/', (req, res) => {
     res.send('Welcome to Data Respresentation & Querying'); //send this return to the page
@@ -29,21 +34,29 @@ app.get('/hello/:name/:second', (req, res) => {
     res.send(`Hello ${name} ${second}`);
 });
 
+//Pathing for index.html
 const path = require('path');
 
 app.get('/index', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+//GET request for index.html form
+app.get('/name', (req, res) => {
+    const firstname = req.query.firstname;
+    const lastname = req.query.lastname;
+    res.send(`Hello ${firstname} ${lastname}`);
+});
+
+//POST request for index.html form
 app.post('/name', (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     res.send(`Hello ${firstname} ${lastname}`);
 });
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
 
+//Code for the JSON data
 app.get('/api/movies', (req, res) => {
     const movies = [
         {

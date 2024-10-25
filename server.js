@@ -24,3 +24,9 @@ app.get('/hello/:name', (req, res) => {
     const name = req.params.name;
     res.send(`Hello ${name}`);
 });
+
+app.get('/hello/:name/:second', (req, res) => {
+    const name = req.params.name;
+    const second = req.params.second;
+    res.send(`Hello ${name} ${second}`);
+});
